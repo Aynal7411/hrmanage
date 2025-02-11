@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Mark Attendance{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Mark Employee Attendance</h2>
+
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Attendance Form</h5>
+
+                <!-- Display Form Errors (if any) -->
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <!-- Form Fields -->
+                <div class="form-group mb-3">
+                    {{ form.as_p }}
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Mark Attendance</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

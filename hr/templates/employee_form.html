@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Employee{% endblock %}
+
+{% block content %}
+
+
+<div class="card shadow-lg p-4">
+    <h2 class="mb-4">{% if form.instance.pk %}Edit Employee{% else %}Add Employee{% endif %}</h2>
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="mb-3">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div class="mb-3">
+            {{ form.phone.label_tag }}
+            {{ form.phone }}
+        </div>
+        <div class="mb-3">
+            {{ form.department.label_tag }}
+            {{ form.department }}
+        </div>
+        <div class="mb-3">
+            {{ form.role.label_tag }}
+            {{ form.role }}
+        </div>
+        <div class="mb-3">
+            {{ form.shift.label_tag }}
+            {{ form.shift }}
+        </div>
+        <button type="submit" class="btn btn-success">✅ Save</button>
+        <a href="{% url 'employee_list' %}" class="btn btn-secondary">⬅️ Back</a>
+    </form>
+</div>
+{% endblock %}
