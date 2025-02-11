@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}HR Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center text-danger">👋 Welcome, {{ user.username }}!</h2>
+    <p class="text-center text-muted">Manage employees, track attendance, and monitor HR operations.</p>
+
+    <!-- Dashboard Stats -->
+    <div class="row text-center mt-4">
+        <div class="col-md-4">
+            <div class="card shadow p-4">
+                <h5>Total Employees</h5>
+                <h3 class="text-primary">150</h3>  <!-- Replace with dynamic count -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow p-4">
+                <h5>Departments</h5>
+                <h3 class="text-success">5</h3>  <!-- Replace with dynamic count -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow p-4">
+                <h5>Attendance Today</h5>
+                <h3 class="text-danger">135</h3>  <!-- Replace with dynamic count -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card text-center shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">👥 Manage Employees</h5>
+                    <p class="card-text">Add, update, or remove employees.</p>
+                    <a href="{% url 'employee_list' %}" class="btn btn-primary">Go to Employees</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">📅 Attendance</h5>
+                    <p class="card-text">Track employee check-ins and check-outs.</p>
+                    <a href="{% url 'attendance_list' %}" class="btn btn-success">View Attendance</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-lg">
+                <div class="card-body">
+                    <h5 class="card-title">⚙️ HR Settings</h5>
+                    <p class="card-text">Manage HR users and system settings.</p>
+                    <a href="{% url 'hr_settings' %}" class="btn btn-primary">HR Settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
